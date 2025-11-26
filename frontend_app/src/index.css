@@ -2,7 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base resets and font smoothing for non-TW elements */
+/* Semantic CSS Variables for light and dark themes */
+:root {
+  /* Light theme tokens */
+  --color-bg: #f9fafb; /* background */
+  --color-surface: #ffffff; /* cards/nav surface */
+  --color-text: #111827; /* primary text */
+  --color-text-muted: #4b5563; /* muted text (contrast 4.7:1+ on white) */
+  --color-primary: #034ea1; /* action blue */
+  --color-primary-foreground: #ffffff; /* text on primary */
+  --color-accent: #c5168c; /* magenta accent */
+  --color-accent-foreground: #ffffff; /* text on accent */
+
+  /* Backdrop/focus helpers */
+  --ring-primary: rgba(3, 78, 161, 0.5);
+  --ring-accent: rgba(197, 22, 140, 0.5);
+}
+
+.dark {
+  /* Dark theme tokens tuned for WCAG AA */
+  --color-bg: #0b0f14; /* near-black blue to increase contrast with text */
+  --color-surface: #111827; /* slate/neutral 800-900 */
+  --color-text: #f3f4f6; /* text on dark bg */
+  --color-text-muted: #cbd5e1; /* muted but >= 4.5:1 against #111827 */
+  --color-primary: #4ea2ff; /* lighten primary for dark bg while keeping brand */
+  --color-primary-foreground: #0b0f14;
+  --color-accent: #ff5abc; /* brighten accent for dark bg */
+  --color-accent-foreground: #0b0f14;
+
+  --ring-primary: rgba(78, 162, 255, 0.6);
+  --ring-accent: rgba(255, 90, 188, 0.6);
+}
+
+/* Base application background/text deriving from tokens (for non-TW elements) */
+html, body, #root {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,8 +45,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f9fafb; /* Background */
-  color: #111827; /* Text */
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 code {
@@ -19,17 +54,25 @@ code {
     monospace;
 }
 
-/* Accessible focus-visible ring default enhancement */
+/* Accessible focus-visible ring default, with semantic vars */
 :focus-visible {
   outline: none;
-  /* Updated ring color to primary (#034ea1) for better brand consistency */
-  box-shadow: 0 0 0 2px rgba(3, 78, 161, 0.5);
+  box-shadow: 0 0 0 2px var(--ring-primary);
   border-radius: 0.5rem;
 }
 
-/* Exact gradient utility class (used when Tailwind utilities are insufficient) */
+/* Exact gradient utility class (compatibility with requested palette) */
 .bg-brand-gradient {
   background-image: linear-gradient(87deg, #c5168c, #034ea1);
+}
+
+/* Optional gradient overlay to ensure text contrast on busy backgrounds */
+.gradient-overlay-contrast::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.2));
+  pointer-events: none;
 }
 
 /* Motion-safe variant for slight parallax or background transitions (optional) */

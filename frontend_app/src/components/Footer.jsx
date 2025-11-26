@@ -7,66 +7,66 @@ import React from 'react';
  */
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-black/5 dark:bg-neutral-900 dark:border-white/10">
+    <footer className="bg-surface border-t border-black/5 dark:border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary text-white grid place-items-center shadow-soft">
+              <div className="h-8 w-8 rounded-lg bg-primary text-primaryForeground grid place-items-center shadow-soft">
                 <span className="sr-only">Ocean Pro</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                   <title>Ocean Pro Logo</title>
                   <path d="M12 3c4.97 0 9 4.03 9 9 0 1.74-.5 3.36-1.36 4.73a1 1 0 0 1-1.68-1.06A6.98 6.98 0 0 0 19 12a7 7 0 1 0-7 7 6.98 6.98 0 0 0 3.67-1.04 1 1 0 1 1 1.06 1.68A8.96 8.96 0 0 1 12 21C7.03 21 3 16.97 3 12S7.03 3 12 3z" fill="currentColor"/>
                 </svg>
               </div>
-              <span className="text-base font-semibold text-neutral-900 dark:text-white">Ocean Pro</span>
+              <span className="text-base font-semibold text-text">Ocean Pro</span>
             </div>
-            <p className="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="mt-3 text-sm text-textMuted">
               A professional React + Tailwind starter with an ocean-blue palette and modern UX.
             </p>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Product</p>
+            <p className="text-sm font-semibold text-text">Product</p>
             <ul className="mt-3 space-y-2">
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#features">Features</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#pricing">Pricing</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-accent dark:text-neutral-300 dark:hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded underline-offset-4 hover:underline transition-colors" href="#updates">Updates</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#features">Features</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#pricing">Pricing</a></li>
+              <li><a className="text-sm text-textMuted hover:text-accent focus-ring-accent rounded underline-offset-4 hover:underline transition-colors" href="#updates">Updates</a></li>
             </ul>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Company</p>
+            <p className="text-sm font-semibold text-text">Company</p>
             <ul className="mt-3 space-y-2">
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#about">About</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#careers">Careers</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#contact">Contact</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#about">About</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#careers">Careers</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#contact">Contact</a></li>
             </ul>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Resources</p>
+            <p className="text-sm font-semibold text-text">Resources</p>
             <ul className="mt-3 space-y-2">
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#docs">Docs</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#blog">Blog</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#support">Support</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#docs">Docs</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#blog">Blog</a></li>
+              <li><a className="text-sm text-textMuted hover:text-primary focus-ring-primary rounded underline-offset-4 hover:underline transition-colors" href="#support">Support</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 border-t border-black/5 dark:border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="text-sm text-textMuted">
             © {new Date().getFullYear()} Ocean Pro. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="https://twitter.com" aria-label="Twitter" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
+            <a href="https://twitter.com" aria-label="Twitter" className="rounded p-2 text-textMuted hover:text-primary focus-ring-primary transition-colors" target="_blank" rel="noreferrer">
               <TwitterIcon />
             </a>
-            <a href="https://github.com" aria-label="GitHub" className="rounded p-2 text-neutral-600 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
+            <a href="https://github.com" aria-label="GitHub" className="rounded p-2 text-textMuted hover:text-accent focus-ring-accent transition-colors" target="_blank" rel="noreferrer">
               <GitHubIcon />
             </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn" className="rounded p-2 text-neutral-600 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="rounded p-2 text-textMuted hover:text-accent focus-ring-accent transition-colors" target="_blank" rel="noreferrer">
               <LinkedInIcon />
             </a>
           </div>

@@ -41,8 +41,8 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
       className={[
         'fixed inset-x-0 top-0 z-50 border-b transition-colors',
         scrolled
-          ? 'backdrop-blur bg-white/70 shadow-sm dark:bg-gray-900/60 border-black/5 dark:border-white/10'
-          : 'backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/50 dark:bg-neutral-900/50 border-transparent'
+          ? 'backdrop-blur bg-surface/75 shadow-sm border-black/5 dark:border-white/10'
+          : 'backdrop-blur supports-[backdrop-filter]:bg-surface/60 bg-surface/50 border-transparent'
       ].join(' ')}
     >
       <nav
@@ -54,7 +54,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
           <a href="#home" onClick={onAnchorClick} className="flex items-center gap-2 group">
             <div
               className={[
-                'h-8 w-8 rounded-lg bg-primary text-white grid place-items-center shadow-soft',
+                'h-8 w-8 rounded-lg bg-primary text-primaryForeground grid place-items-center shadow-soft',
                 motionSafe('transition-transform group-hover:scale-105')
               ].join(' ')}
             >
@@ -64,7 +64,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
                 <path d="M12 3c4.97 0 9 4.03 9 9 0 1.74-.5 3.36-1.36 4.73a1 1 0 0 1-1.68-1.06A6.98 6.98 0 0 0 19 12a7 7 0 1 0-7 7 6.98 6.98 0 0 0 3.67-1.04 1 1 0 1 1 1.06 1.68A8.96 8.96 0 0 1 12 21C7.03 21 3 16.97 3 12S7.03 3 12 3z" fill="currentColor"/>
               </svg>
             </div>
-            <span className="text-base font-semibold text-text/90 dark:text-white tracking-tight group-hover:text-primary dark:group-hover:text-primary transition-colors">
+            <span className="text-base font-semibold text-text tracking-tight group-hover:text-primary transition-colors">
               Ocean Pro
             </span>
           </a>
@@ -72,16 +72,16 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <div className="flex items-center gap-6">
-              <a href="#home" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+              <a href="#home" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
                 Home
               </a>
-              <a href="#features" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+              <a href="#features" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
                 Features
               </a>
-              <a href="#pricing" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+              <a href="#pricing" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
                 Pricing
               </a>
-              <a href="#contact" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-accent dark:hover:text-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded">
+              <a href="#contact" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-accent transition-colors focus-ring-accent rounded">
                 Contact
               </a>
             </div>
@@ -90,8 +90,9 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
                 type="button"
                 onClick={onToggleTheme}
                 className={[
-                  'inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-200',
-                  'hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
+                  'inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium text-text',
+                  'border-black/10 dark:border-white/20',
+                  'hover:bg-surface/80 focus-ring-primary',
                   motionSafe('transition-colors')
                 ].join(' ')}
                 aria-label={`Activate ${isDark ? 'light' : 'dark'} mode`}
@@ -113,8 +114,8 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
                 href="#get-started"
                 onClick={onAnchorClick}
                 className={[
-                  'inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft',
-                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
+                  'inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primaryForeground shadow-soft',
+                  'focus-ring-primary',
                   motionSafe('transition-transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg')
                 ].join(' ')}
               >
@@ -128,7 +129,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
             <button
               type="button"
               onClick={onToggleTheme}
-              className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="inline-flex items-center justify-center rounded-md p-2 text-text hover:bg-surface/80 focus-ring-primary"
               aria-label={`Activate ${isDark ? 'light' : 'dark'} mode`}
               title="Toggle theme"
             >
@@ -137,7 +138,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="inline-flex items-center justify-center rounded-md p-2 text-text hover:bg-surface/80 focus-ring-primary"
               aria-label="Open main menu"
               aria-controls="primary-mobile-menu"
               aria-expanded={open}
@@ -158,16 +159,16 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
           ].join(' ')}
         >
           <div className="py-2 space-y-1">
-            <a href="#home" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Home</a>
-            <a href="#features" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Features</a>
-            <a href="#pricing" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Pricing</a>
-            <a href="#contact" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40">Contact</a>
+            <a href="#home" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Home</a>
+            <a href="#features" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Features</a>
+            <a href="#pricing" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Pricing</a>
+            <a href="#contact" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-accent">Contact</a>
             <a
               href="#get-started"
               onClick={onAnchorClick}
               className={[
-                'mt-2 block text-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft',
-                'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
+                'mt-2 block text-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primaryForeground shadow-soft',
+                'focus-ring-primary',
                 motionSafe('transition-transform hover:scale-[1.01] active:scale-[0.99] hover:shadow-lg')
               ].join(' ')}
             >

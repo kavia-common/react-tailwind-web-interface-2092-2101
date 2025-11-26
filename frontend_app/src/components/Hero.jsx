@@ -36,17 +36,20 @@ export default function Hero() {
     <>
       <section
         id="home"
-        className="relative overflow-hidden bg-ocean-gradient bg-brand-gradient dark:bg-ocean-gradient"
+        className="relative overflow-hidden bg-ocean-gradient bg-brand-gradient"
       >
+        {/* High-contrast overlay for readability on the gradient */}
+        <div className="absolute inset-0 pointer-events-none bg-black/25" aria-hidden="true"></div>
+
         {/* Decorative blob aligned with new palette */}
         <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl"></div>
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <span
                 className={[
-                  'inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20',
+                  'inline-flex items-center rounded-full bg-surface/10 px-3 py-1 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/30',
                   motionSafe('transition-opacity', entered ? 'opacity-100' : 'opacity-0')
                 ].join(' ')}
               >
@@ -55,7 +58,7 @@ export default function Hero() {
               <h1
                 ref={headingRef}
                 className={[
-                  'mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl dark:text-white',
+                  'mt-4 text-4xl font-extrabold tracking-tight text-surface sm:text-5xl lg:text-6xl',
                   motionSafe(
                     'transition-all duration-700',
                     entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
@@ -67,14 +70,14 @@ export default function Hero() {
               <p
                 ref={subRef}
                 className={[
-                  'mt-4 text-base text-neutral-600 sm:text-lg dark:text-neutral-300',
+                  'mt-4 text-base sm:text-lg text-surface/90',
                   motionSafe(
                     'transition-all duration-700 delay-100',
                     entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                   )
                 ].join(' ')}
               >
-                A clean, accessible React + Tailwind starter with an ocean-blue palette, amber accents,
+                A clean, accessible React + Tailwind starter with a blue–magenta brand gradient,
                 and thoughtful details. Ship faster with a professional foundation.
               </p>
 
@@ -92,9 +95,8 @@ export default function Hero() {
                   href="#get-started"
                   onClick={onAnchorClick}
                   className={[
-                    'inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-soft',
-                    // Ensure accessible focus ring using primary
-                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
+                    'inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primaryForeground shadow-soft',
+                    'focus-ring-primary',
                     motionSafe('transition-transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg')
                   ].join(' ')}
                 >
@@ -104,10 +106,8 @@ export default function Hero() {
                   href="#features"
                   onClick={onAnchorClick}
                   className={[
-                    // Secondary: outline in accent color, readable on both themes
-                    'inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-semibold bg-white/80 text-accent border-accent backdrop-blur',
-                    'hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40',
-                    'dark:bg-neutral-900/60 dark:text-accent dark:border-accent dark:hover:bg-neutral-900',
+                    'inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-semibold bg-surface/85 text-accent border-accent backdrop-blur',
+                    'hover:bg-surface focus-ring-accent',
                     motionSafe('transition-colors')
                   ].join(' ')}
                 >
@@ -119,7 +119,7 @@ export default function Hero() {
             <div className="relative">
               <div
                 className={[
-                  'aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/5 bg-white shadow-soft dark:bg-neutral-900 dark:border-white/10',
+                  'aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/10 bg-surface shadow-soft',
                   motionSafe(
                     'transition-all duration-700 delay-200',
                     entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
@@ -129,7 +129,7 @@ export default function Hero() {
                 {/* Placeholder illustration */}
                 <div className="grid h-full place-items-center">
                   <svg
-                    className="h-24 w-24 text-primary/60"
+                    className="h-24 w-24 text-primary/80"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     role="img"

@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-text transition-colors duration-300 dark:bg-neutral-900 dark:text-neutral-100">
+    <div className="min-h-screen bg-background text-text transition-colors duration-300">
       <Navbar isDark={isDark} onToggleTheme={toggleTheme} />
       <main role="main" className="pt-16">
         <Hero />
