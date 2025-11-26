@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2">
               <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#features">Features</a></li>
               <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#pricing">Pricing</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#updates">Updates</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-accent dark:text-neutral-300 dark:hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded underline-offset-4 hover:underline transition-colors" href="#updates">Updates</a></li>
             </ul>
           </div>
 
@@ -63,10 +63,10 @@ export default function Footer() {
             <a href="https://twitter.com" aria-label="Twitter" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
               <TwitterIcon />
             </a>
-            <a href="https://github.com" aria-label="GitHub" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
+            <a href="https://github.com" aria-label="GitHub" className="rounded p-2 text-neutral-600 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
               <GitHubIcon />
             </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="rounded p-2 text-neutral-600 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
               <LinkedInIcon />
             </a>
           </div>

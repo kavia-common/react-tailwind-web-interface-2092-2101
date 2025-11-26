@@ -10,8 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f9fafb; /* Ocean Professional background */
-  color: #111827; /* Ocean Professional text */
+  background-color: #f9fafb; /* Background */
+  color: #111827; /* Text */
 }
 
 code {
@@ -22,8 +22,25 @@ code {
 /* Accessible focus-visible ring default enhancement */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);
+  /* Updated ring color to primary (#034ea1) for better brand consistency */
+  box-shadow: 0 0 0 2px rgba(3, 78, 161, 0.5);
   border-radius: 0.5rem;
+}
+
+/* Exact gradient utility class (used when Tailwind utilities are insufficient) */
+.bg-brand-gradient {
+  background-image: linear-gradient(87deg, #c5168c, #034ea1);
+}
+
+/* Motion-safe variant for slight parallax or background transitions (optional) */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe\\:bg-gradient-animate {
+    background-size: 150% 150%;
+    transition: background-position 800ms ease;
+  }
+  .motion-safe\\:bg-gradient-animate:hover {
+    background-position: 100% 0%;
+  }
 }
 
 /* Reduce or disable animations when user prefers reduced motion */

@@ -64,7 +64,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
                 <path d="M12 3c4.97 0 9 4.03 9 9 0 1.74-.5 3.36-1.36 4.73a1 1 0 0 1-1.68-1.06A6.98 6.98 0 0 0 19 12a7 7 0 1 0-7 7 6.98 6.98 0 0 0 3.67-1.04 1 1 0 1 1 1.06 1.68A8.96 8.96 0 0 1 12 21C7.03 21 3 16.97 3 12S7.03 3 12 3z" fill="currentColor"/>
               </svg>
             </div>
-            <span className="text-base font-semibold text-text/90 dark:text-white tracking-tight group-hover:text-text dark:group-hover:text-white transition-colors">
+            <span className="text-base font-semibold text-text/90 dark:text-white tracking-tight group-hover:text-primary dark:group-hover:text-primary transition-colors">
               Ocean Pro
             </span>
           </a>
@@ -81,7 +81,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
               <a href="#pricing" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
                 Pricing
               </a>
-              <a href="#contact" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
+              <a href="#contact" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-accent dark:hover:text-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded">
                 Contact
               </a>
             </div>
@@ -161,7 +161,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
             <a href="#home" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Home</a>
             <a href="#features" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Features</a>
             <a href="#pricing" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Pricing</a>
-            <a href="#contact" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Contact</a>
+            <a href="#contact" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40">Contact</a>
             <a
               href="#get-started"
               onClick={onAnchorClick}

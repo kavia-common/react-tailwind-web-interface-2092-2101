@@ -36,10 +36,10 @@ export default function Hero() {
     <>
       <section
         id="home"
-        className="relative overflow-hidden bg-ocean-hero dark:bg-gradient-to-br dark:from-blue-900/40 dark:to-neutral-900"
+        className="relative overflow-hidden bg-ocean-gradient bg-brand-gradient dark:bg-ocean-gradient"
       >
-        {/* Decorative blob */}
-        <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
+        {/* Decorative blob aligned with new palette */}
+        <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl"></div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -93,6 +93,7 @@ export default function Hero() {
                   onClick={onAnchorClick}
                   className={[
                     'inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-soft',
+                    // Ensure accessible focus ring using primary
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
                     motionSafe('transition-transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg')
                   ].join(' ')}
@@ -103,9 +104,10 @@ export default function Hero() {
                   href="#features"
                   onClick={onAnchorClick}
                   className={[
-                    'inline-flex items-center justify-center rounded-lg border border-primary text-primary px-6 py-3 text-sm font-semibold bg-white/70 backdrop-blur',
-                    'hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40',
-                    'dark:bg-neutral-900/50 dark:hover:bg-neutral-900',
+                    // Secondary: outline in accent color, readable on both themes
+                    'inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-semibold bg-white/80 text-accent border-accent backdrop-blur',
+                    'hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40',
+                    'dark:bg-neutral-900/60 dark:text-accent dark:border-accent dark:hover:bg-neutral-900',
                     motionSafe('transition-colors')
                   ].join(' ')}
                 >
