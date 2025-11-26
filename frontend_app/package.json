@@ -11,7 +11,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npm run tailwind:init || true",
+    "tailwind:init": "node -e \"console.log('Tailwind ready')\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +31,9 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
   }
 }

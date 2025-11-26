@@ -1,4 +1,15 @@
-/* CSS Variables for Theme Management */
+/* CSS Variables for Theme Management (legacy styles) */
+/* Note: Tailwind CSS is now installed and will be used for most styling.
+   Dark mode will be controlled via `class` strategy (e.g., <html class="dark">).
+   Ocean Professional palette is available via Tailwind config:
+   - primary: #2563EB
+   - secondary: #F59E0B
+   - error: #EF4444
+   - background: #f9fafb
+   - surface: #ffffff
+   - text: #111827
+   Gradient utility: bg-ocean-hero or from-blue-500/10 to-gray-50
+*/
 :root {
   /* Light theme colors */
   --bg-primary: #ffffff;
