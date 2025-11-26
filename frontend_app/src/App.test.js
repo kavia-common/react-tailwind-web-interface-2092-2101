@@ -6,10 +6,9 @@ describe('App smoke tests (Ocean Professional)', () => {
     render(<App />);
     // Scope to the banner/header landmark (Navbar is rendered inside header)
     const banner = screen.getByRole('banner');
-    // Brand text within banner (specifically the visible brand span, avoid sr-only duplicate)
-    expect(within(banner).getByText(/Ocean Pro/i, { selector: 'span' })).toBeInTheDocument();
-    // Visually hidden brand label or other repeated brand instances still present within banner
-    expect(within(banner).getAllByText(/Ocean Pro/i).length).toBeGreaterThan(0);
+    // Assert brand anchor by accessible role and name to avoid ambiguity
+    const brandLink = within(banner).getByRole('link', { name: /ocean pro/i });
+    expect(brandLink).toBeInTheDocument();
   });
 
   test('renders hero heading and both CTA buttons', () => {
