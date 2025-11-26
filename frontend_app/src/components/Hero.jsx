@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { usePrefersReducedMotion, smoothScrollToId, motionSafe } from '../utils/motion';
 
 /**
  * PUBLIC_INTERFACE
@@ -6,65 +7,149 @@ import React from 'react';
  * strong headline, supporting text, and primary/secondary call-to-action buttons.
  */
 export default function Hero() {
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const [entered, setEntered] = useState(false);
+  const headingRef = useRef(null);
+  const subRef = useRef(null);
+  const ctasRef = useRef(null);
+
+  useEffect(() => {
+    // Simple entrance animation on mount
+    if (prefersReducedMotion) return;
+    // Delay slightly for a smoother experience
+    const t = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(t);
+  }, [prefersReducedMotion]);
+
+  const onAnchorClick = useCallback(
+    (e) => {
+      const href = e.currentTarget.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        smoothScrollToId(href, prefersReducedMotion);
+      }
+    },
+    [prefersReducedMotion]
+  );
+
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden bg-ocean-hero dark:bg-gradient-to-br dark:from-blue-900/40 dark:to-neutral-900"
-    >
-      {/* Decorative blob */}
-      <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
+    <>
+      <section
+        id="home"
+        className="relative overflow-hidden bg-ocean-hero dark:bg-gradient-to-br dark:from-blue-900/40 dark:to-neutral-900"
+      >
+        {/* Decorative blob */}
+        <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20">
-              Ocean Professional
-            </span>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl dark:text-white">
-              Build modern web UIs with clarity and confidence
-            </h1>
-            <p className="mt-4 text-base text-neutral-600 sm:text-lg dark:text-neutral-300">
-              A clean, accessible React + Tailwind starter with an ocean-blue palette, amber accents,
-              and thoughtful details. Ship faster with a professional foundation.
-            </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a
-                href="#get-started"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-soft transition-opacity hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <span
+                className={[
+                  'inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20',
+                  motionSafe('transition-opacity', entered ? 'opacity-100' : 'opacity-0')
+                ].join(' ')}
               >
-                Get Started
-              </a>
-              <a
-                href="#features"
-                className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-6 py-3 text-sm font-semibold bg-white/70 backdrop-blur hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:bg-neutral-900/50 dark:hover:bg-neutral-900"
+                Ocean Professional
+              </span>
+              <h1
+                ref={headingRef}
+                className={[
+                  'mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl dark:text-white',
+                  motionSafe(
+                    'transition-all duration-700',
+                    entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                  )
+                ].join(' ')}
               >
-                View Features
-              </a>
-            </div>
-          </div>
+                Build modern web UIs with clarity and confidence
+              </h1>
+              <p
+                ref={subRef}
+                className={[
+                  'mt-4 text-base text-neutral-600 sm:text-lg dark:text-neutral-300',
+                  motionSafe(
+                    'transition-all duration-700 delay-100',
+                    entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                  )
+                ].join(' ')}
+              >
+                A clean, accessible React + Tailwind starter with an ocean-blue palette, amber accents,
+                and thoughtful details. Ship faster with a professional foundation.
+              </p>
 
-          <div className="relative">
-            <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/5 bg-white shadow-soft dark:bg-neutral-900 dark:border-white/10">
-              {/* Placeholder illustration */}
-              <div className="grid h-full place-items-center">
-                <svg
-                  className="h-24 w-24 text-primary/60"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  role="img"
-                  aria-label="Decorative ocean wave"
+              <div
+                ref={ctasRef}
+                className={[
+                  'mt-8 flex flex-col sm:flex-row gap-3',
+                  motionSafe(
+                    'transition-all duration-700 delay-200',
+                    entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                  )
+                ].join(' ')}
+              >
+                <a
+                  href="#get-started"
+                  onClick={onAnchorClick}
+                  className={[
+                    'inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-soft',
+                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
+                    motionSafe('transition-transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg')
+                  ].join(' ')}
                 >
-                  <title>Decorative ocean wave</title>
-                  <path d="M4 14c2 0 3-2 5-2s3 2 5 2 3-2 5-2v4c-2 0-3 2-5 2s-3-2-5-2-3 2-5 2v-4z" />
-                  <path d="M4 8c2 0 3-2 5-2s3 2 5 2 3-2 5-2v4c-2 0-3 2-5 2s-3-2-5-2-3 2-5 2V8z" />
-                </svg>
+                  Get Started
+                </a>
+                <a
+                  href="#features"
+                  onClick={onAnchorClick}
+                  className={[
+                    'inline-flex items-center justify-center rounded-lg border border-primary text-primary px-6 py-3 text-sm font-semibold bg-white/70 backdrop-blur',
+                    'hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40',
+                    'dark:bg-neutral-900/50 dark:hover:bg-neutral-900',
+                    motionSafe('transition-colors')
+                  ].join(' ')}
+                >
+                  View Features
+                </a>
               </div>
             </div>
-            <div className="pointer-events-none absolute -left-10 -bottom-10 h-56 w-56 rounded-full bg-amber-400/10 blur-3xl" aria-hidden="true"></div>
+
+            <div className="relative">
+              <div
+                className={[
+                  'aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/5 bg-white shadow-soft dark:bg-neutral-900 dark:border-white/10',
+                  motionSafe(
+                    'transition-all duration-700 delay-200',
+                    entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                  )
+                ].join(' ')}
+              >
+                {/* Placeholder illustration */}
+                <div className="grid h-full place-items-center">
+                  <svg
+                    className="h-24 w-24 text-primary/60"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    role="img"
+                    aria-label="Decorative ocean wave"
+                  >
+                    <title>Decorative ocean wave</title>
+                    <path d="M4 14c2 0 3-2 5-2s3 2 5 2 3-2 5-2v4c-2 0-3 2-5 2s-3-2-5-2-3 2-5 2v-4z" />
+                    <path d="M4 8c2 0 3-2 5-2s3 2 5 2 3-2 5-2v4c-2 0-3 2-5 2s-3-2-5-2-3 2-5 2V8z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="pointer-events-none absolute -left-10 -bottom-10 h-56 w-56 rounded-full bg-amber-400/10 blur-3xl" aria-hidden="true"></div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Minimal section stubs to enable in-page scrolling targets */}
+      <section id="features" className="scroll-mt-24"></section>
+      <section id="pricing" className="scroll-mt-24"></section>
+      <section id="contact" className="scroll-mt-24"></section>
+      <section id="get-started" className="scroll-mt-24"></section>
+    </>
   );
 }

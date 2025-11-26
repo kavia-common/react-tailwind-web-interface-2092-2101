@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { usePrefersReducedMotion, smoothScrollToId, motionSafe } from '../utils/motion';
 
 /**
  * PUBLIC_INTERFACE
@@ -7,19 +8,56 @@ import React, { useState } from 'react';
  */
 export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  const handleToggleMenu = () => setOpen(prev => !prev);
+  const handleToggleMenu = useCallback(() => setOpen((prev) => !prev), []);
+
+  // Change navbar background subtly on scroll
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 4);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Smooth in-page scrolling
+  const onAnchorClick = useCallback(
+    (e) => {
+      const href = e.currentTarget.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        smoothScrollToId(href, prefersReducedMotion);
+        setOpen(false);
+      }
+    },
+    [prefersReducedMotion]
+  );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 dark:bg-neutral-900/70 border-b border-black/5 dark:border-white/10">
+    <header
+      className={[
+        'fixed inset-x-0 top-0 z-50 border-b transition-colors',
+        scrolled
+          ? 'backdrop-blur bg-white/70 shadow-sm dark:bg-gray-900/60 border-black/5 dark:border-white/10'
+          : 'backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/50 dark:bg-neutral-900/50 border-transparent'
+      ].join(' ')}
+    >
       <nav
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         aria-label="Primary"
       >
         <div className="flex h-16 items-center justify-between">
           {/* Brand */}
-          <a href="#home" className="flex items-center gap-2 group">
-            <div className="h-8 w-8 rounded-lg bg-primary text-white grid place-items-center shadow-soft">
+          <a href="#home" onClick={onAnchorClick} className="flex items-center gap-2 group">
+            <div
+              className={[
+                'h-8 w-8 rounded-lg bg-primary text-white grid place-items-center shadow-soft',
+                motionSafe('transition-transform group-hover:scale-105')
+              ].join(' ')}
+            >
               <span className="sr-only">Ocean Pro</span>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
                 <title>Ocean Pro Logo</title>
@@ -34,16 +72,16 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <div className="flex items-center gap-6">
-              <a href="#home" className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+              <a href="#home" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
                 Home
               </a>
-              <a href="#features" className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+              <a href="#features" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
                 Features
               </a>
-              <a href="#pricing" className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+              <a href="#pricing" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
                 Pricing
               </a>
-              <a href="#contact" className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+              <a href="#contact" onClick={onAnchorClick} className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded">
                 Contact
               </a>
             </div>
@@ -51,7 +89,11 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
               <button
                 type="button"
                 onClick={onToggleTheme}
-                className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors"
+                className={[
+                  'inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-200',
+                  'hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
+                  motionSafe('transition-colors')
+                ].join(' ')}
                 aria-label={`Activate ${isDark ? 'light' : 'dark'} mode`}
                 title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
               >
@@ -69,7 +111,12 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
               </button>
               <a
                 href="#get-started"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 transition-colors"
+                onClick={onAnchorClick}
+                className={[
+                  'inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft',
+                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
+                  motionSafe('transition-transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg')
+                ].join(' ')}
               >
                 Get Started
               </a>
@@ -81,7 +128,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
             <button
               type="button"
               onClick={onToggleTheme}
-              className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               aria-label={`Activate ${isDark ? 'light' : 'dark'} mode`}
               title="Toggle theme"
             >
@@ -90,7 +137,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="inline-flex items-center justify-center rounded-md p-2 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               aria-label="Open main menu"
               aria-controls="primary-mobile-menu"
               aria-expanded={open}
@@ -104,16 +151,25 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
         {/* Mobile Menu */}
         <div
           id="primary-mobile-menu"
-          className={`md:hidden overflow-hidden transition-all duration-300 ${open ? 'max-h-64' : 'max-h-0'}`}
+          className={[
+            'md:hidden origin-top overflow-hidden',
+            prefersReducedMotion ? '' : 'transition-all duration-200 ease-out',
+            open ? 'max-h-64 opacity-100 scale-y-100' : 'max-h-0 opacity-0 scale-y-95'
+          ].join(' ')}
         >
           <div className="py-2 space-y-1">
-            <a href="#home" className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Home</a>
-            <a href="#features" className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Features</a>
-            <a href="#pricing" className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Pricing</a>
-            <a href="#contact" className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Contact</a>
+            <a href="#home" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Home</a>
+            <a href="#features" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Features</a>
+            <a href="#pricing" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Pricing</a>
+            <a href="#contact" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">Contact</a>
             <a
               href="#get-started"
-              className="mt-2 block text-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              onClick={onAnchorClick}
+              className={[
+                'mt-2 block text-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft',
+                'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60',
+                motionSafe('transition-transform hover:scale-[1.01] active:scale-[0.99] hover:shadow-lg')
+              ].join(' ')}
             >
               Get Started
             </a>

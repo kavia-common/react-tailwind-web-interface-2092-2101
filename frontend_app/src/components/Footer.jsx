@@ -29,27 +29,27 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Product</p>
             <ul className="mt-3 space-y-2">
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#features">Features</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#pricing">Pricing</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#updates">Updates</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#features">Features</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#pricing">Pricing</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#updates">Updates</a></li>
             </ul>
           </div>
 
           <div>
             <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Company</p>
             <ul className="mt-3 space-y-2">
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#about">About</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#careers">Careers</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#contact">Contact</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#about">About</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#careers">Careers</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#contact">Contact</a></li>
             </ul>
           </div>
 
           <div>
             <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Resources</p>
             <ul className="mt-3 space-y-2">
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#docs">Docs</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#blog">Blog</a></li>
-              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#support">Support</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#docs">Docs</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#blog">Blog</a></li>
+              <li><a className="text-sm text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded underline-offset-4 hover:underline transition-colors" href="#support">Support</a></li>
             </ul>
           </div>
         </div>
@@ -60,13 +60,13 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="https://twitter.com" aria-label="Twitter" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:text-neutral-300" target="_blank" rel="noreferrer">
+            <a href="https://twitter.com" aria-label="Twitter" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
               <TwitterIcon />
             </a>
-            <a href="https://github.com" aria-label="GitHub" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:text-neutral-300" target="_blank" rel="noreferrer">
+            <a href="https://github.com" aria-label="GitHub" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
               <GitHubIcon />
             </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:text-neutral-300" target="_blank" rel="noreferrer">
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="rounded p-2 text-neutral-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 dark:text-neutral-300 transition-colors" target="_blank" rel="noreferrer">
               <LinkedInIcon />
             </a>
           </div>
