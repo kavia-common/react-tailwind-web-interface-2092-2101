@@ -4,6 +4,7 @@ import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
+import { EnvBadge } from './utils/env';
 
 /**
  * PUBLIC_INTERFACE
@@ -36,6 +37,8 @@ function App() {
         <Hero />
       </main>
       <Footer />
+      {/* Optional environment badge (visible when 'showEnvBadge' feature flag is enabled) */}
+      <EnvBadge />
     </div>
   );
 }
