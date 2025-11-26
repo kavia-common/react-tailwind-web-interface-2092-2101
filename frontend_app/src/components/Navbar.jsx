@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import HeaderCartButton from './HeaderCartButton';
 import { usePrefersReducedMotion, smoothScrollToId, motionSafe } from '../utils/motion';
 
 /**
@@ -51,7 +53,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
       >
         <div className="flex h-16 items-center justify-between">
           {/* Brand */}
-          <a href="#home" onClick={onAnchorClick} className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <div
               className={[
                 'h-8 w-8 rounded-lg bg-primary text-primaryForeground grid place-items-center shadow-soft',
@@ -67,23 +69,20 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
             <span className="text-base font-semibold text-text tracking-tight group-hover:text-primary transition-colors">
               Ocean Pro
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <div className="flex items-center gap-6">
-              <a href="#home" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
+              <Link to="/" className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
                 Home
-              </a>
-              <a href="#features" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
-                Features
-              </a>
-              <a href="#pricing" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
-                Pricing
-              </a>
-              <a href="#contact" onClick={onAnchorClick} className="text-sm font-medium text-text hover:text-accent transition-colors focus-ring-accent rounded">
-                Contact
-              </a>
+              </Link>
+              <Link to="/" className="text-sm font-medium text-text hover:text-primary transition-colors focus-ring-primary rounded">
+                Catalog
+              </Link>
+              <Link to="/checkout" className="text-sm font-medium text-text hover:text-accent transition-colors focus-ring-accent rounded">
+                Checkout
+              </Link>
             </div>
             <div className="flex items-center gap-3">
               <button
@@ -110,9 +109,9 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
                   </>
                 )}
               </button>
-              <a
-                href="#get-started"
-                onClick={onAnchorClick}
+              <HeaderCartButton />
+              <Link
+                to="/"
                 className={[
                   'inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primaryForeground shadow-soft',
                   'focus-ring-primary',
@@ -120,7 +119,7 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
                 ].join(' ')}
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -159,21 +158,19 @@ export default function Navbar({ isDark = false, onToggleTheme = () => {} }) {
           ].join(' ')}
         >
           <div className="py-2 space-y-1">
-            <a href="#home" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Home</a>
-            <a href="#features" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Features</a>
-            <a href="#pricing" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Pricing</a>
-            <a href="#contact" onClick={onAnchorClick} className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-accent">Contact</a>
-            <a
-              href="#get-started"
-              onClick={onAnchorClick}
+            <Link to="/" className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Home</Link>
+            <Link to="/" className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-primary">Catalog</Link>
+            <Link to="/checkout" className="block rounded-md px-3 py-2 text-sm font-medium text-text hover:bg-surface/80 focus-ring-accent">Checkout</Link>
+            <Link
+              to="/cart"
               className={[
                 'mt-2 block text-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primaryForeground shadow-soft',
                 'focus-ring-primary',
                 motionSafe('transition-transform hover:scale-[1.01] active:scale-[0.99] hover:shadow-lg')
               ].join(' ')}
             >
-              Get Started
-            </a>
+              Open Cart
+            </Link>
           </div>
         </div>
       </nav>
